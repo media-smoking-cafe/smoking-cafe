@@ -1,27 +1,16 @@
 <?php
-
 // CSS・JS読み込み
 function ploom_files()
 {
-    // 共通CSS
-    if (file_exists(get_template_directory() . '/styles/common.css')) {
-        wp_enqueue_style(
-            'common-style',
-            get_template_directory_uri() . '/styles/common.css',
-            array(),
-            filemtime(get_template_directory() . '/styles/common.css'),
-            'all'
-        );
-    }
 
-    // TOPページ（front-page.php）
+    // TOPページ（index.php）
     if (is_front_page()) {
-        if (file_exists(get_template_directory() . '/styles/front-page.css')) {
+        if (file_exists(get_template_directory() . '/styles/index.css')) {
             wp_enqueue_style(
-                'front-page-style',
-                get_template_directory_uri() . '/styles/front-page.css',
+                'index-style',
+                get_template_directory_uri() . '/styles/index.css',
                 array(),
-                filemtime(get_template_directory() . '/styles/front-page.css'),
+                filemtime(get_template_directory() . '/styles/index.css'),
                 'all'
             );
         }
@@ -37,14 +26,14 @@ function ploom_files()
         }
     }
 
-    // ブログ一覧ページ（page-blog.php）
-    if (is_page('blog')) {
-        if (file_exists(get_template_directory() . '/styles/page-blog.css')) {
+    // ブログ一覧ページ（blog.php）
+    if (is_home()) {
+        if (file_exists(get_template_directory() . '/styles/home.css')) {
             wp_enqueue_style(
-                'page-blog-style',
-                get_template_directory_uri() . '/styles/page-blog.css',
+                'home-style',
+                get_template_directory_uri() . '/styles/home.css',
                 array(),
-                filemtime(get_template_directory() . '/styles/page-blog.css'),
+                filemtime(get_template_directory() . '/styles/home.css'),
                 'all'
             );
         }
@@ -61,6 +50,17 @@ function ploom_files()
                 'all'
             );
         }
+    }
+
+    // ヘッダーCSS
+    if (file_exists(get_template_directory() . '/styles/header.css')) {
+        wp_enqueue_style(
+            'header-style',
+            get_template_directory_uri() . '/styles/header.css',
+            array(),
+            filemtime(get_template_directory() . '/styles/header.css'),
+            'all'
+        );
     }
 
     // 共通JSを使う場合
